@@ -76,7 +76,7 @@ app.get("/authors/:id", async (req, res) => {
 
 app.get("/authors/:id/books", async (req, res) => {
   const author = await Author.findById(req.params.id)
-  const books = await Book.find({ author: mongoose.Types.ObjectId(author.id) })
+  const books = await Book.find({ author: new mongoose.Types.ObjectId(author.id) })
   res.json(books)
 })
 
